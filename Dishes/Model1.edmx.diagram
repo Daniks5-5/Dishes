@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="afb550f17f024596938c5b27018d8a3a" Name="Diagram1">
+        <EntityTypeShape EntityType="TableWareModel.Category" Width="1.5" PointX="0.75" PointY="0.875" />
+        <EntityTypeShape EntityType="TableWareModel.Fabric" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="TableWareModel.Order" Width="1.5" PointX="3" PointY="13.375" />
+        <EntityTypeShape EntityType="TableWareModel.OrderDetail" Width="1.5" PointX="5.25" PointY="3.75" />
+        <EntityTypeShape EntityType="TableWareModel.PickUpPoint" Width="1.5" PointX="0.75" PointY="14.875" />
+        <EntityTypeShape EntityType="TableWareModel.Product" Width="1.5" PointX="3" PointY="8.5" />
+        <EntityTypeShape EntityType="TableWareModel.Provider" Width="1.5" PointX="0.75" PointY="7.125" />
+        <EntityTypeShape EntityType="TableWareModel.Role" Width="1.5" PointX="5.75" PointY="7.375" />
+        <EntityTypeShape EntityType="TableWareModel.Status" Width="1.5" PointX="0.75" PointY="12.5" />
+        <EntityTypeShape EntityType="TableWareModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TableWareModel.Tovar" Width="1.5" PointX="3" PointY="2.75" />
+        <EntityTypeShape EntityType="TableWareModel.User" Width="1.5" PointX="8" PointY="7" />
+        <AssociationConnector Association="TableWareModel.FK_Tovar_Category" />
+        <AssociationConnector Association="TableWareModel.FK_Product_Fabric" />
+        <AssociationConnector Association="TableWareModel.FK_Tovar_Fabric" />
+        <AssociationConnector Association="TableWareModel.FK_Order_PickUpPoint" />
+        <AssociationConnector Association="TableWareModel.FK_Order_Status" />
+        <AssociationConnector Association="TableWareModel.FK_OrderDetail_Order" />
+        <AssociationConnector Association="TableWareModel.FK_OrderDetail_Tovar" />
+        <AssociationConnector Association="TableWareModel.FK_Tovar_Provider" />
+        <AssociationConnector Association="TableWareModel.FK_User_Role" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
