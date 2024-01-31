@@ -20,3 +20,7 @@ C:\Users\WSR\source\repos\Dishes\Dishes\obj\Debug\Dishes.csproj.CoreCompileInput
 C:\Users\WSR\source\repos\Dishes\Dishes\obj\Debug\Dishes.csproj.CopyComplete
 C:\Users\WSR\source\repos\Dishes\Dishes\obj\Debug\Dishes.exe
 C:\Users\WSR\source\repos\Dishes\Dishes\obj\Debug\Dishes.pdb
+C:\Users\WSR\source\repos\Dishes\Dishes\obj\Debug\AdminWindow.g.cs
+C:\Users\WSR\source\repos\Dishes\Dishes\obj\Debug\UserWindow.g.cs
+C:\Users\WSR\source\repos\Dishes\Dishes\obj\Debug\AdminWindow.baml
+C:\Users\WSR\source\repos\Dishes\Dishes\obj\Debug\UserWindow.baml
