@@ -11,10 +11,3 @@ namespace Dishes
         public static TableWareEntities context = new TableWareEntities();
     }
 }
-class Test
-{
-    public void tets2()
-    {
-
-    }
-}

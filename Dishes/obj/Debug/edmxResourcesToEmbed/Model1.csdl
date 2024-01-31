@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TableWareModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="TableWareEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Category" EntityType="TableWareModel.Category" />
+    <EntitySet Name="Fabric" EntityType="TableWareModel.Fabric" />
+    <EntitySet Name="Order" EntityType="TableWareModel.Order" />
+    <EntitySet Name="OrderDetail" EntityType="TableWareModel.OrderDetail" />
+    <EntitySet Name="PickUpPoint" EntityType="TableWareModel.PickUpPoint" />
+    <EntitySet Name="Product" EntityType="TableWareModel.Product" />
+    <EntitySet Name="Provider" EntityType="TableWareModel.Provider" />
+    <EntitySet Name="Role" EntityType="TableWareModel.Role" />
+    <EntitySet Name="Status" EntityType="TableWareModel.Status" />
+    <EntitySet Name="sysdiagrams" EntityType="TableWareModel.sysdiagrams" />
+    <EntitySet Name="Tovar" EntityType="TableWareModel.Tovar" />
+    <EntitySet Name="User" EntityType="TableWareModel.User" />
+    <AssociationSet Name="FK_Tovar_Category" Association="TableWareModel.FK_Tovar_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Tovar" EntitySet="Tovar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Fabric" Association="TableWareModel.FK_Product_Fabric">
+      <End Role="Fabric" EntitySet="Fabric" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tovar_Fabric" Association="TableWareModel.FK_Tovar_Fabric">
+      <End Role="Fabric" EntitySet="Fabric" />
+      <End Role="Tovar" EntitySet="Tovar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_PickUpPoint" Association="TableWareModel.FK_Order_PickUpPoint">
+      <End Role="PickUpPoint" EntitySet="PickUpPoint" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Status" Association="TableWareModel.FK_Order_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetail_Order" Association="TableWareModel.FK_OrderDetail_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetail_Tovar" Association="TableWareModel.FK_OrderDetail_Tovar">
+      <End Role="Tovar" EntitySet="Tovar" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tovar_Provider" Association="TableWareModel.FK_Tovar_Provider">
+      <End Role="Provider" EntitySet="Provider" />
+      <End Role="Tovar" EntitySet="Tovar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="TableWareModel.FK_User_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Tovar" Relationship="TableWareModel.FK_Tovar_Category" FromRole="Category" ToRole="Tovar" />
+  </EntityType>
+  <EntityType Name="Fabric">
+    <Key>
+      <PropertyRef Name="FabricID" />
+    </Key>
+    <Property Name="FabricID" Type="Int32" Nullable="false" />
+    <Property Name="FabricName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="TableWareModel.FK_Product_Fabric" FromRole="Fabric" ToRole="Product" />
+    <NavigationProperty Name="Tovar" Relationship="TableWareModel.FK_Tovar_Fabric" FromRole="Fabric" ToRole="Tovar" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrdedID" />
+    </Key>
+    <Property Name="OrdedID" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DateDelivery" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IndexID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="Int32" Nullable="false" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PickUpPoint" Relationship="TableWareModel.FK_Order_PickUpPoint" FromRole="Order" ToRole="PickUpPoint" />
+    <NavigationProperty Name="Status" Relationship="TableWareModel.FK_Order_Status" FromRole="Order" ToRole="Status" />
+    <NavigationProperty Name="OrderDetail" Relationship="TableWareModel.FK_OrderDetail_Order" FromRole="Order" ToRole="OrderDetail" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="OrderDetailID" />
+    </Key>
+    <Property Name="OrderDetailID" Type="Int32" Nullable="false" />
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="Article" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Order" Relationship="TableWareModel.FK_OrderDetail_Order" FromRole="OrderDetail" ToRole="Order" />
+    <NavigationProperty Name="Tovar" Relationship="TableWareModel.FK_OrderDetail_Tovar" FromRole="OrderDetail" ToRole="Tovar" />
+  </EntityType>
+  <EntityType Name="PickUpPoint">
+    <Key>
+      <PropertyRef Name="IndexID" />
+    </Key>
+    <Property Name="IndexID" Type="Int32" Nullable="false" />
+    <Property Name="IndexPoint" Type="Int64" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Street" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Number" Type="Int32" />
+    <NavigationProperty Name="Order" Relationship="TableWareModel.FK_Order_PickUpPoint" FromRole="PickUpPoint" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Article" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FabricID" Type="Int32" Nullable="false" />
+    <Property Name="ProviderID" Type="Int32" Nullable="false" />
+    <Property Name="OrderDetailID" Type="Int32" Nullable="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Fabric" Relationship="TableWareModel.FK_Product_Fabric" FromRole="Product" ToRole="Fabric" />
+  </EntityType>
+  <EntityType Name="Provider">
+    <Key>
+      <PropertyRef Name="ProviderID" />
+    </Key>
+    <Property Name="ProviderID" Type="Int32" Nullable="false" />
+    <Property Name="ProviderName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Tovar" Relationship="TableWareModel.FK_Tovar_Provider" FromRole="Provider" ToRole="Tovar" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="TableWareModel.FK_User_Role" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="StatusID" />
+    </Key>
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <Property Name="StatusName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Order" Relationship="TableWareModel.FK_Order_Status" FromRole="Status" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tovar">
+    <Key>
+      <PropertyRef Name="Article" />
+    </Key>
+    <Property Name="Article" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ed" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaxDiscount" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FabricID" Type="Int32" Nullable="false" />
+    <Property Name="ProviderID" Type="Int32" Nullable="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="Deist" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Garage" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Details" Type="String" Nullable="false" MaxLength="550" FixedLength="false" Unicode="true" />
+    <Property Name="Img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Category" Relationship="TableWareModel.FK_Tovar_Category" FromRole="Tovar" ToRole="Category" />
+    <NavigationProperty Name="Fabric" Relationship="TableWareModel.FK_Tovar_Fabric" FromRole="Tovar" ToRole="Fabric" />
+    <NavigationProperty Name="OrderDetail" Relationship="TableWareModel.FK_OrderDetail_Tovar" FromRole="Tovar" ToRole="OrderDetail" />
+    <NavigationProperty Name="Provider" Relationship="TableWareModel.FK_Tovar_Provider" FromRole="Tovar" ToRole="Provider" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserSurName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserLastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Role" Relationship="TableWareModel.FK_User_Role" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <Association Name="FK_Tovar_Category">
+    <End Type="TableWareModel.Category" Role="Category" Multiplicity="1" />
+    <End Type="TableWareModel.Tovar" Role="Tovar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Tovar">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Fabric">
+    <End Type="TableWareModel.Fabric" Role="Fabric" Multiplicity="1" />
+    <End Type="TableWareModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fabric">
+        <PropertyRef Name="FabricID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="FabricID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tovar_Fabric">
+    <End Type="TableWareModel.Fabric" Role="Fabric" Multiplicity="1" />
+    <End Type="TableWareModel.Tovar" Role="Tovar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fabric">
+        <PropertyRef Name="FabricID" />
+      </Principal>
+      <Dependent Role="Tovar">
+        <PropertyRef Name="FabricID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_PickUpPoint">
+    <End Type="TableWareModel.PickUpPoint" Role="PickUpPoint" Multiplicity="1" />
+    <End Type="TableWareModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PickUpPoint">
+        <PropertyRef Name="IndexID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="IndexID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Status">
+    <End Type="TableWareModel.Status" Role="Status" Multiplicity="1" />
+    <End Type="TableWareModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="StatusID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetail_Order">
+    <End Type="TableWareModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="TableWareModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrdedID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetail_Tovar">
+    <End Type="TableWareModel.Tovar" Role="Tovar" Multiplicity="1" />
+    <End Type="TableWareModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tovar">
+        <PropertyRef Name="Article" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="Article" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tovar_Provider">
+    <End Type="TableWareModel.Provider" Role="Provider" Multiplicity="1" />
+    <End Type="TableWareModel.Tovar" Role="Tovar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provider">
+        <PropertyRef Name="ProviderID" />
+      </Principal>
+      <Dependent Role="Tovar">
+        <PropertyRef Name="ProviderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role">
+    <End Type="TableWareModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="TableWareModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

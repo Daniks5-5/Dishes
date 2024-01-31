@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dishes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="300" Width="300" MinHeight="300" MinWidth="300" MaxHeight="300" MaxWidth="300">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="48*"/>
+            <RowDefinition Height="44*"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="62*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="46*"/>
+            <ColumnDefinition Width="89*"/>
+            <ColumnDefinition Width="63*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Логин" HorizontalAlignment="Left" Margin="13,8,0,0" Grid.Row="1" VerticalAlignment="Top" Height="33" Width="48"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="6,1,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" TextChanged="TextBox_TextChanged" Grid.ColumnSpan="2"/>
+        <Label Content="Пароль" HorizontalAlignment="Left" Margin="9,18,0,0" Grid.Row="2" VerticalAlignment="Top" Height="33" Width="58" Grid.RowSpan="2"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="42" Margin="7,9,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" Grid.RowSpan="2"/>
+        <Button Content="Вход" Grid.Column="1" HorizontalAlignment="Left" Margin="35,15,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Click="Button_Click" RenderTransformOrigin="-1.102,-0.683"/>
+        <Button Content="Регистрация" Grid.Column="1" HorizontalAlignment="Left" Margin="33,14,0,0" Grid.Row="4" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
     </Grid>
 </Window>
