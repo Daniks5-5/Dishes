@@ -13,5 +13,8 @@ namespace Dishes
 }
 class Test
 {
+    public void tets2()
+    {
 
+    }
 }
