@@ -25,6 +25,43 @@ namespace Dishes
             InitializeComponent();
         }
 
-        
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+        if(string.IsNullOrEmpty(TextBoxLogin.Text) || string.IsNullOrEmpty(PasswordBox.Password)) { 
+                MessageBox.Show("Введите логин и пароль");
+                return;
+            }
+        //запрос к базе данных
+        using (var db = new TableWareEntities())
+            {
+                //ссылка на таблицу базы данных
+                var user = db.User
+                    .AsNoTracking()
+                    .FirstOrDefault(u => u.Login == TextBoxLogin.Text && u.Password == PasswordBox.Password);
+                //проверка 
+                if (user == null)
+                {
+                    MessageBox.Show("Пользоветль с таким именем не найден!");
+                    return;
+                }        
+                MessageBox.Show("Пользователь успешно найден!");
+
+                switch (user.RoleID)
+                {
+                    case 1:
+                        Window AdminWindow = new AdminWindow();
+                        AdminWindow.Show();
+                        break;
+                    case 2:
+                        Window UserWindown = new UserWindow();
+                        UserWindown.Show();
+                        break;
+                }
+                Close(); //для закрытия окна при вводе данных
+
+         
+            
+            }
+        }
     }
 }
