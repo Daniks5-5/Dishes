@@ -57,10 +57,7 @@ namespace Dishes
                         UserWindown.Show();
                         break;
                 }
-                Close(); //для закрытия окна при вводе данных
-
-         
-            
+                Close(); //для закрытия окна при вводе данных           
             }
         }
     }

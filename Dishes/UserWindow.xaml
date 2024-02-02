@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dishes"
         mc:Ignorable="d"
-        Title="UserWindow" Height="450" Width="800" MaxHeight="300" MaxWidth="300" MinHeight="300" MinWidth="300">
+        Title="UserWindow" Height="850" Width="1200" MaxHeight="850" MaxWidth="1200" MinHeight="850" MinWidth="1200">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25*"/>
@@ -20,8 +20,22 @@
             <ColumnDefinition Width="89*"/>
             <ColumnDefinition Width="63*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="1" Margin="26,11,37,8" Grid.Row="1">User</TextBlock>
-        <Image Grid.Column="2" Margin="25,5,32,4" Source="logo.png" Stretch="Fill" Grid.Row="1"/>
+        <TextBox HorizontalAlignment="Left" Height="78" Margin="95,18,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="322" Grid.Column="1" TextChanged="TextBox_TextChanged"/>
+        <Label Content="Поиск по фамилии" HorizontalAlignment="Left" Margin="40,44,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="22"/>
+        <Label Content="Выбор города" HorizontalAlignment="Left" Margin="70,44,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="22"/>
+        <Label Content="Сортировка" HorizontalAlignment="Left" Margin="84,33,0,0" Grid.Row="3" VerticalAlignment="Top" FontSize="22"/>
+        <ComboBox Name="ComboCity" Grid.Column="1" HorizontalAlignment="Left" Margin="153,41,0,0" Grid.Row="2" VerticalAlignment="Top" Width="222" Height="50">
+            <TextBlock TextWrapping="Wrap" Text="TextBlock"/>
+            <TextBlock TextWrapping="Wrap" Text="TextBlock"/>
+            <TextBlock TextWrapping="Wrap" Text="TextBlock"/>
+            <TextBlock TextWrapping="Wrap" Text="TextBlock"/>
+        </ComboBox>
+        <ComboBox Name="ComboSort" Grid.Column="1" HorizontalAlignment="Left" Margin="161,37,0,0" Grid.Row="3" VerticalAlignment="Top" Width="222" Height="50">
+            <TextBlock TextWrapping="Wrap" Text="TextBlock"/>
+            <TextBlock TextWrapping="Wrap" Text="TextBlock"/>
+            <TextBlock TextWrapping="Wrap" Text="TextBlock"/>
+            <TextBlock x:Name="TbSearch" TextWrapping="Wrap" Text="TextBlock"/>
+        </ComboBox>
 
     </Grid>
 </Window>
